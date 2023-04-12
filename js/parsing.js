@@ -6,19 +6,22 @@ xmlhttp.onreadystatechange = function() {
         HTMLDOM(myObj);
     }
 };
-xmlhttp.open("GET", "http://localhost/json-act-php/");
+xmlhttp.open("GET", "http://json-php.test/");
 xmlhttp.send();
 
 function HTMLDOM(obj){
     var txt = "";
     var bg = "service-sec";
+    var navLink = ["HistoryOfMusic", "MusicCulture", "ElementMusic", "MusicGenre", "MusicIndustry"];
+
+    // Child Object
     for (var i = 0 ; i < obj.music.length; i++) {
 
         var entriesOtl1 = Object.entries(obj.music[i].outline);
 
         txt +=
         `
-        <section class="${bg}" id="${convertCaps(obj.music[i].lesson)}">
+        <section class="${bg}" id="${navLink[i]}">
           <div class="container">
             <div class="row">
               <div class="col-md-12">
@@ -29,7 +32,7 @@ function HTMLDOM(obj){
               <div class="col-md-12">
                 <div class="row">
                 `;
-
+                // Sub Child Object
                 for (var j = 0 ; j < entriesOtl1.length; j++) {
                   var entriesOtl2 = Object.entries(entriesOtl1[j][1]);
                   txt += 
@@ -63,7 +66,7 @@ function HTMLDOM(obj){
                               }
 
                             }
-                            //check if leng of sub obj is 1
+                            //check if length of sub obj is 1
                             else if(entriesOtl2.length == 1){
                               // Verify if data type is object (for Company object)
                               if (typeof entriesOtl2[k][1] === "object"){
