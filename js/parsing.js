@@ -17,7 +17,7 @@ function HTMLDOM(obj){
     // Child Object
     for (var i = 0 ; i < obj.music.length; i++) {
 
-        var entriesOtl1 = Object.entries(obj.music[i].outline);
+        var entriesOtl1 = Object.entries(obj.music[i].outline); // [[Key, Value], [Key, Value], [Key, Value]]
 
         txt +=
         `
